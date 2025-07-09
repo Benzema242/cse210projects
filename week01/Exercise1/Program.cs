@@ -10,13 +10,13 @@ namespace Exercise1
             Console.WriteLine("This project is part of the C# Fundamentals course.");
 
             Console.Write("What is your first name? ");
-            string firstname = Console.ReadLine();
+            string firstName = Console.ReadLine();
 
             Console.Write("What is your last name? ");
-            string lastname = Console.ReadLine();
+            string lastName = Console.ReadLine();
 
             Console.WriteLine();
-            Console.WriteLine($"Your name  is {lastname}, {firstname} {lastname}.");
+            Console.WriteLine($"Your name  is {lastName}, {firstName} {lastName}.");
 
         }
     }
