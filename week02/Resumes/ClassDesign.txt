@@ -1,0 +1,19 @@
+// Class Design for Job & Resume - Week 02 Assignment
+// Created by: Rubens Scutt
+
+Class: Job
+--------------------------
+- _company: string
+- _jobTitle: string
+- _startYear: int
+- _endYear: int
+--------------------------
++ Display(): void
+
+
+Class: Resume
+--------------------------
+- _name: string
+- _jobs: List<Job>
+--------------------------
++ Display(): void
