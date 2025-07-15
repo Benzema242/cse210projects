@@ -1,9 +1,9 @@
 using System;
 /*
     I have exceeded the requirements by adding an extra feature that allows the user to describe their mood for the day.
-class Program
 */
 
+class Program
 {
     static void Main(string[] args)
     {
