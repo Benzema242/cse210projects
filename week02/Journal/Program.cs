@@ -61,8 +61,8 @@ class Program
     static void WriteEntry(Journal journal, PromptGenerator promptGenerator)
     {
         string prompt = promptGenerator.GetRandomPrompt();
-        Console.WriteLine($"Prompt: {prompt}");
-        Console.Write("Your entry: ");
+        Console.WriteLine(prompt);
+        Console.Write("> ");
         string entryText = Console.ReadLine();
 
         Console.Write("How would you describe your mood today? ");

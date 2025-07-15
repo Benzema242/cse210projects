@@ -24,12 +24,12 @@ public class Entry
     }
 
     // Helpers for load and save functions
-    public string ToDataLine() => $"{_date}|{_promptText}|{_entryText}";
+    public string ToDataLine() => $"{_date}|{_promptText}|{_entryText}|{_mood}";
         
     public static Entry FromDataLine(string dataLine)
     {
         var parts = dataLine.Split('|');
-        if (parts.Length != 3)
+        if (parts.Length != 4)
             throw new FormatException("Invalid data line format.");
 
         return new Entry(parts[0], parts[1], parts[2], parts[3]);
