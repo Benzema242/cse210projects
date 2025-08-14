@@ -203,7 +203,8 @@ public class GoalManager
 
     public void LoadGoals()
     {
-        string filename = "goals.txt"; 
+        Console.Write("What is the filename for the goal file? ");
+        string filename = Console.ReadLine();
         
         if (!File.Exists(filename))
         {
@@ -213,42 +214,45 @@ public class GoalManager
 
         try
         {
-            _goals.Clear(); 
+            _goals.Clear();
             
             using (StreamReader reader = new StreamReader(filename))
             {
-                
+                // First line is the score
                 string scoreLine = reader.ReadLine();
                 if (scoreLine != null)
                 {
                     _score = int.Parse(scoreLine);
                 }
 
+                // Read each goal
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    string[] parts = line.Split('|');
+                    string[] parts = line.Split(':');
+                    string goalType = parts[0];
+                    string[] data = parts[1].Split(',');
                     
-                    if (parts[0] == "SimpleGoal")
+                    if (goalType == "SimpleGoal")
                     {
-                        SimpleGoal goal = new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]));
-                        if (bool.Parse(parts[4])) 
+                        SimpleGoal goal = new SimpleGoal(data[0], data[1], int.Parse(data[2]));
+                        if (bool.Parse(data[3])) // If completed
                         {
                             goal.RecordEvent();
                         }
                         _goals.Add(goal);
                     }
-                    else if (parts[0] == "EternalGoal")
+                    else if (goalType == "EternalGoal")
                     {
-                        EternalGoal goal = new EternalGoal(parts[1], parts[2], int.Parse(parts[3]));
+                        EternalGoal goal = new EternalGoal(data[0], data[1], int.Parse(data[2]));
                         _goals.Add(goal);
                     }
-                    else if (parts[0] == "ChecklistGoal")
+                    else if (goalType == "ChecklistGoal")
                     {
-                        ChecklistGoal goal = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), 
-                                                             int.Parse(parts[5]), int.Parse(parts[6]));
-                        
-                        int amountCompleted = int.Parse(parts[4]);
+                        ChecklistGoal goal = new ChecklistGoal(data[0], data[1], int.Parse(data[2]), 
+                                                             int.Parse(data[4]), int.Parse(data[3]));
+                        // Record events for amount completed
+                        int amountCompleted = int.Parse(data[5]);
                         for (int i = 0; i < amountCompleted; i++)
                         {
                             goal.RecordEvent();
