@@ -81,7 +81,7 @@ namespace Mindfulness
             }
         }
 
-        public void ShowCountdown(int seconds)
+        public void ShowCountDown(int seconds)
         {
             for (int i = seconds; i > 0; i--)
             {

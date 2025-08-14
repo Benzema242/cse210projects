@@ -31,7 +31,7 @@ namespace Mindfulness
             Console.WriteLine($"> {GetRandomPrompt()}");
 
             Console.Write("\nYou may begin in: ");
-            ShowCountdown(5); 
+            ShowCountDown(5);
 
             List<string> items = GetListFromUser();
 

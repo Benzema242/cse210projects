@@ -70,7 +70,7 @@ namespace Mindfulness
             Console.WriteLine($"{GetRandomQuestion()}");
             Console.WriteLine();
             Console.Write("You may begin in: ");
-            ShowCountdown(5);
+            ShowCountDown(5);
             Console.Clear();
         }
 

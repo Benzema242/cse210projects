@@ -21,14 +21,14 @@ namespace Mindfulness
                 {
                     Console.WriteLine("Now breathe in...");
                     int step = Math.Min(4, remaining);
-                    ShowCountdown(step); 
+                    ShowCountDown(step); 
                     remaining -= step;
                 }
                 else
                 {
                     Console.WriteLine("Now breathe out...");
                     int step = Math.Min(4, remaining);
-                    ShowCountdown(step); 
+                    ShowCountDown(step);
                     remaining -= step;
                 }
                 inhale = !inhale;
