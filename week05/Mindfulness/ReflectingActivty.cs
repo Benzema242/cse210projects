@@ -6,6 +6,7 @@ namespace Mindfulness
 {
     public class ReflectingActivity : Activity
     {
+        private int questionsIndex = 0;
         private readonly List<string> _prompts = new List<string>
         {
             "--- Think of a time when you stood up for someone else. ---",
@@ -63,7 +64,7 @@ namespace Mindfulness
             Console.WriteLine();
             Console.WriteLine("When you have something in mind, press Enter to continue...");
             Console.ReadLine();
-            
+
             Console.Clear();
             Console.WriteLine("Now ponder on the following questions as you reflect on this experience.");
             Console.WriteLine($"{GetRandomQuestion()}");
@@ -76,12 +77,12 @@ namespace Mindfulness
         private void DisplayQuestions()
         {
             var endTime = DateTime.Now.AddSeconds(Duration);
-            
+
             while (DateTime.Now < endTime)
             {
                 Console.WriteLine($"> {GetRandomQuestion()}");
                 ShowSpinner(Math.Min(8, (int)(endTime - DateTime.Now).TotalSeconds));
-                
+
                 Console.WriteLine("Press Enter to continue to the next question or press 0 to go to the main menu.");
                 var input = Console.ReadLine();
 
@@ -89,6 +90,24 @@ namespace Mindfulness
                 {
                     return;
                 }
+                questionsIndex++;
+
+                if (questionsIndex < _questions.Count && DateTime.Now < endTime)
+                {
+                    Console.Clear();
+                }
+                else
+                {
+                    Console.WriteLine("You have answered all the questions or time is up.");
+                }
+            }
+            if (questionsIndex >= _questions.Count)
+            {
+                Console.WriteLine("You have reflected on all questions.");
+    }
+            else
+            {
+                Console.WriteLine("Time is up for this activity.");
             }
         }
     }

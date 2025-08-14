@@ -30,7 +30,7 @@ namespace Mindfulness
 
             _duration = ReadPositiveInt();
             Console.WriteLine("\nGet ready to begin...");
-            ShowSpinner(5);
+            ShowSpinner(5, true); // Show "Ready!" only here
         }
 
         public void DisplayEndingMessage()

@@ -1,6 +1,9 @@
 using System;
 using Mindfulness;
 
+/* I have excceded requirements by adding user control on reflecting activity questions.
+/*And. the ability to end activity early by pressing "0".
+*/
 class Program
 {
     static void Main(string[] args)
